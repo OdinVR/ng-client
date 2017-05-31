@@ -5,17 +5,19 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
-import { MdButtonModule, MdCardModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdIconModule } from '@angular/material';
 import { ViewportComponent } from './components/viewport/viewport.component';
 import { SceneEditorComponent } from './components/scene-editor/scene-editor.component';
 import { KeyframeEditorComponent } from './components/keyframe-editor/keyframe-editor.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewportComponent,
     SceneEditorComponent,
-    KeyframeEditorComponent
+    KeyframeEditorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,9 @@ import { KeyframeEditorComponent } from './components/keyframe-editor/keyframe-e
     HttpModule,
     BrowserAnimationsModule,
     MdButtonModule,
-    MdCardModule
+    MdCardModule,
+    MdMenuModule,
+    MdIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
