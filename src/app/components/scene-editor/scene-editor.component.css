@@ -18,3 +18,7 @@
     left: 0;
     overflow-y: auto;
 }
+
+.list-item span {
+    line-height: 35px;
+}
