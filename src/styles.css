@@ -2,6 +2,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
+    background-color: #e53935 !important;
 }
 
 .spacer-hr {
