@@ -13,6 +13,8 @@
           <div class="row">
             <h2 class="text-center">Model Properties</h2>
             <table class="table table-striped table-hover ">
+
+              <!-- Models dropdown menu -->
               <tr>
                 <td>
                   <button md-raised-button [mdMenuTriggerFor]="menu">Models<md-icon>arrow_drop_down</md-icon></button>
@@ -20,6 +22,7 @@
                 <td class="list-item text-center"><span>Model name</span></td>
               </tr>
 
+              <!-- X Position -->
               <tr>
                 <td class="list-item"><span>X Position</span></td>
                 <td class="text-right">
@@ -29,6 +32,7 @@
                 </td>
               </tr>
 
+              <!-- Y Position -->
               <tr>
                 <td class="list-item"><span>Y Position</span></td>
                 <td class="text-right">
@@ -38,6 +42,7 @@
                 </td>
               </tr>
 
+              <!-- Z Position -->
               <tr>
                 <td class="list-item"><span>Z Position</span></td>
                 <td class="text-right">
@@ -47,6 +52,7 @@
                 </td>
               </tr>
 
+              <!-- Model Scale -->
               <tr>
                 <td class="list-item"><span>Scale</span></td>
                 <td class="text-right">
@@ -56,6 +62,7 @@
                 </td>
               </tr>
 
+              <!-- X Rotation -->
               <tr>
                 <td class="list-item"><span>X Rotation</span></td>
                 <td class="text-right">
@@ -65,6 +72,7 @@
                 </td>
               </tr>
 
+              <!-- Y Rotation -->
               <tr>
                 <td class="list-item"><span>Y Rotation</span></td>
                 <td class="text-right">
@@ -74,6 +82,7 @@
                 </td>
               </tr>
 
+              <!-- Z Rotation -->
               <tr>
                 <td class="list-item"><span>Z Rotation</span></td>
                 <td class="text-right">
@@ -83,6 +92,7 @@
                 </td>
               </tr>
 
+              <!-- Model spin toggle -->
               <tr>
                 <td class="list-item"><span>Spin</span></td>
                 <td class="text-right list-item">
@@ -90,6 +100,7 @@
                 </td>
               </tr>
 
+              <!-- Spin axis -->
               <tr>
                 <td class="list-item"><span>Spin Axis</span></td>
                 <td class="text-right list-item">
@@ -103,6 +114,58 @@
                 </td>
               </tr>
 
+            </table>
+
+          </div>
+
+          <hr>
+          <div class="row">
+            <h2 class="text-center">Scene Properties</h2>
+            <table class="table table-striped table-hover">
+
+              <!-- Skybox type -->
+              <tr>
+                <td class="list-item"><span>Skybox Type</span></td>
+                <td class="text-right list-item">
+                  <span>
+                    <md-select [(ngModel)]="skyboxType">
+                      <md-option *ngFor="let option of skyboxTypeOptions" [value]="option.value">
+                        {{ option.viewValue }}
+                      </md-option>
+                    </md-select>
+                  </span>
+                </td>
+              </tr>
+              
+              <!-- Skybox Size -->
+              <tr>
+                <td class="list-item"><span>Skybox Size</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="50" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <!-- Skybox Position -->
+              <tr>
+                <td class="list-item"><span>Skybox Position</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="25" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <!-- Camera Height -->
+              <tr>
+                <td class="list-item"><span>Camera Height</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="1.5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
             </table>
           </div>
         </div>
