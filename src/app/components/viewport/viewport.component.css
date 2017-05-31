@@ -2,7 +2,6 @@
     width: 100%;
     display: inline-block;
     position: relative;
-    background-color: red;
 }
 
 .viewport-container:after {
@@ -18,5 +17,5 @@
     bottom: 0;
     right: 0;
     left: 0;
-    
+    background-color: #222222;
 }
