@@ -22,3 +22,7 @@
 .list-item span {
     line-height: 35px;
 }
+
+.button-row {
+    width: 100%;
+}
