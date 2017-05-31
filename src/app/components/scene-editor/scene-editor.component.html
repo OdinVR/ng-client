@@ -19,6 +19,90 @@
                 </td>
                 <td class="list-item text-center"><span>Model name</span></td>
               </tr>
+
+              <tr>
+                <td class="list-item"><span>X Position</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Y Position</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Z Position</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Scale</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="1" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>X Rotation</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Y Rotation</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Z Rotation</span></td>
+                <td class="text-right">
+                  <md-input-container>
+                    <input mdInput value="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  </md-input-container>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Spin</span></td>
+                <td class="text-right list-item">
+                  <span><md-slide-toggle></md-slide-toggle></span>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="list-item"><span>Spin Axis</span></td>
+                <td class="text-right list-item">
+                  <span>
+                    <md-select [(ngModel)]="spinAxis">
+                      <md-option *ngFor="let option of spinAxisOptions" [value]="option.value">
+                        {{ option.viewValue }}
+                      </md-option>
+                    </md-select>
+                  </span>
+                </td>
+              </tr>
+
             </table>
           </div>
         </div>

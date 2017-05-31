@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SceneEditorComponent implements OnInit {
 
+  private spinAxis = 'x';
+
+  private spinAxisOptions = [
+    {value: 'x', viewValue: 'X'},
+    {value: 'y', viewValue: 'Y'},
+    {value: 'z', viewValue: 'Z'}
+  ];
+
   constructor() { }
 
   ngOnInit() {

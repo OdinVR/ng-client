@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdIconModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdIconModule, MdInputModule, MdSlideToggleModule, MdSelectModule } from '@angular/material';
 import { ViewportComponent } from './components/viewport/viewport.component';
 import { SceneEditorComponent } from './components/scene-editor/scene-editor.component';
 import { KeyframeEditorComponent } from './components/keyframe-editor/keyframe-editor.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MdButtonModule,
     MdCardModule,
     MdMenuModule,
-    MdIconModule
+    MdIconModule,
+    MdInputModule,
+    MdSlideToggleModule,
+    MdSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
