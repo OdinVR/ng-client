@@ -5,18 +5,25 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
-import { MdButtonModule } from '@angular/material';
+import { MdButtonModule, MdCardModule } from '@angular/material';
+import { ViewportComponent } from './components/viewport/viewport.component';
+import { SceneEditorComponent } from './components/scene-editor/scene-editor.component';
+import { KeyframeEditorComponent } from './components/keyframe-editor/keyframe-editor.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewportComponent,
+    SceneEditorComponent,
+    KeyframeEditorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdButtonModule
+    MdButtonModule,
+    MdCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

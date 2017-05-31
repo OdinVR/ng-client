@@ -1,0 +1,21 @@
+.properties-container {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    background-color: red;
+}
+
+.properties-container:after {
+    padding-top: 80.5%;
+    display: block;
+    content: '';
+}
+
+.properties-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+}

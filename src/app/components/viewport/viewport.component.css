@@ -1,0 +1,22 @@
+.viewport-container {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    background-color: red;
+}
+
+.viewport-container:after {
+    padding-top: 56.25%;
+    /* 16:9 ratio */
+    display: block;
+    content: '';
+}
+
+.viewport-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+}
