@@ -18,10 +18,10 @@ export class SceneEditorComponent implements OnInit {
     {value: 'milky', viewValue: 'Space'}
   ];
 
-  private scenes:string[] = [ 'Scene 1', 'Scene 2'];
+  private scenes:string[] = [ 'New Scene', 'Scene 1', 'Scene 2'];
 
   /* Scene properties */
-  private sceneName: string;
+  private sceneIndex: number;
 
   /* Model properties */
   private xposition: number;
@@ -41,7 +41,7 @@ export class SceneEditorComponent implements OnInit {
   private cameraHeight: number;
 
   constructor() {
-    this.sceneName = 'New scene'
+    this.sceneIndex = 0;
 
     this.xposition = 0;
     this.yposition = 0;
@@ -64,7 +64,7 @@ export class SceneEditorComponent implements OnInit {
   }
 
   selectScene(index: number) {
-    this.sceneName = this.scenes[index];
+    this.sceneIndex = index;
   }
 
 }

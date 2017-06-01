@@ -9,8 +9,8 @@
               <div class="flex-left">
                 <a md-button color="accent" [mdMenuTriggerFor]="sceneMenu" class="dropdown-toggle">Scene<md-icon>arrow_drop_down</md-icon></a>
                 &nbsp;&nbsp;&nbsp;
-                <md-input-container>
-                  <input [(ngModel)]='sceneName' mdInput class="scene-name">
+                <md-input-container color="accent">
+                  <input [(ngModel)]='scenes[sceneIndex]' mdInput class="scene-name">
                 </md-input-container>
               </div>
 
@@ -20,20 +20,6 @@
                 <button md-raised-button color="accent"><md-icon>file_upload</md-icon>&nbsp;Upload Model</button>
               </div>    
             </div>
-            
-            <!--
-            <div class="button-row">
-              <button md-raised-button color="accent">Scene</button>
-
-              <md-input-container>
-                <input [(ngModel)]='sceneName' mdInput class="scene-name">
-              </md-input-container>
-
-              <button md-raised-button color="primary"><md-icon>update</md-icon>&nbsp;Update</button>
-              <button md-raised-button color="primary"><md-icon>visibility</md-icon>&nbsp;Preview</button>
-              <button md-raised-button color="accent"><md-icon>file_upload</md-icon>&nbsp;Upload Model</button> 
-            </div>  
-            -->
 
             <hr>
           </div>
