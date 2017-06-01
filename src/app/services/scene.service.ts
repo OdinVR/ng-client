@@ -10,7 +10,7 @@ export class SceneService {
     console.log('Scene service initialized ...');
   }
 
-  private createDummyScene(): Scene {
+  public createDummyScene(): Scene {
     let saracen: Model = {
       name: 'Saracen',
       url: 'test url',
@@ -67,6 +67,19 @@ export class SceneService {
     }
 
     return newScene;
+  }
+
+  public getEmptyScene(): Scene {
+    return {
+      name: 'New scene',
+      models: [],
+      environment: {
+        skybox_position: 25,
+        skybox_size: 50,
+        skybox_type: 'grid',
+        camera_height: 1.5
+      }
+    }
   }
 
 }
