@@ -29,10 +29,16 @@
 
 .flex-left {
     padding-left: 10px;
-    width: 100px;
+    width: 400px;
 }
 
 .flex-right {
     width: 400px;
     margin-left: auto;
+}
+
+.scene-name {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 100%;
 }

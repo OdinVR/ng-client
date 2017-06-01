@@ -18,6 +18,9 @@ export class SceneEditorComponent implements OnInit {
     {value: 'milky', viewValue: 'Space'}
   ];
 
+  /* Scene properties */
+  private sceneName: string;
+
   /* Model properties */
   private xposition: number;
   private yposition: number;
@@ -36,6 +39,8 @@ export class SceneEditorComponent implements OnInit {
   private cameraHeight: number;
 
   constructor() {
+    this.sceneName = 'New scene'
+
     this.xposition = 0;
     this.yposition = 0;
     this.zposition = 0;
@@ -50,6 +55,7 @@ export class SceneEditorComponent implements OnInit {
     this.skyboxSize = 50;
     this.skyboxPosition = 25;
     this.cameraHeight = 1.5;
+
   }
 
   ngOnInit() {
