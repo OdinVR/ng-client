@@ -1,5 +1,5 @@
 export class Model {
-    _id: string;
+    _id?: string;
     name: string;
     url: string;
     xposition: number;
