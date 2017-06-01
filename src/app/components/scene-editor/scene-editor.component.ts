@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SceneService } from '../../services/scene.service';
 
 @Component({
   selector: 'app-scene-editor',
@@ -18,7 +19,7 @@ export class SceneEditorComponent implements OnInit {
     {value: 'milky', viewValue: 'Space'}
   ];
 
-  private scenes:string[] = [ 'New Scene', 'Scene 1', 'Scene 2'];
+  private sceneNames:string[] = [ 'New Scene', 'Scene 1', 'Scene 2'];
 
   /* Scene properties */
   private sceneIndex: number;
@@ -40,7 +41,7 @@ export class SceneEditorComponent implements OnInit {
   private skyboxPosition: number;
   private cameraHeight: number;
 
-  constructor() {
+  constructor( private _sceneService: SceneService ) {
     this.sceneIndex = 0;
 
     this.xposition = 0;
