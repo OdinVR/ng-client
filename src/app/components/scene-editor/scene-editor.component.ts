@@ -30,45 +30,17 @@ export class SceneEditorComponent implements OnInit {
   /* Model properties */
   private models: Model[];
   private modelIndex: number;
-
-  private modelName: string;
-  private xposition: number;
-  private yposition: number;
-  private zposition: number;
-  private scale: number;
-  private xrotation: number;
-  private yrotation: number;
-  private zrotation: number;
-  private spin: boolean;
-  private spinAxis: string;
+  private currentModel: Model;
 
   /* Environment properties */
-  private skyboxType: string;
-  private skyboxSize: number;
-  private skyboxPosition: number;
-  private cameraHeight: number;
+  private currentEnvironment: Environment;
 
   constructor( private _sceneService: SceneService ) {
     this.sceneIndex = 0;
     this.scenes = [];
     
-    this.modelName = '';
-    this.modelIndex = 0;
-    this.xposition = 0;
-    this.yposition = 0;
-    this.zposition = 0;
-    this.scale = 1;
-    this.xrotation = 0;
-    this.yrotation = 0;
-    this.zrotation = 0;
-    this.spin = false;
-    this.spinAxis = 'x';
-
-    this.skyboxType = 'grid'
-    this.skyboxSize = 50;
-    this.skyboxPosition = 25;
-    this.cameraHeight = 1.5;
-
+    this.currentModel = new Model();
+    this.currentEnvironment = new Environment();
   }
 
   ngOnInit() {
@@ -86,37 +58,42 @@ export class SceneEditorComponent implements OnInit {
   selectModel(index: number) {
     this.modelIndex = index;
     this.updateViewModelProperties(index);
+    this.currentModel = this.models[index];
   }
 
   updateViewModelProperties(index: number) {
-    this.modelName = this.models[this.modelIndex].name;
-    this.xposition = this.models[this.modelIndex].xposition;
-    this.yposition = this.models[this.modelIndex].yposition;
-    this.zposition = this.models[this.modelIndex].zposition;
-    this.scale = this.models[this.modelIndex].scale;
-    this.xrotation = this.models[this.modelIndex].xrotation;
-    this.yrotation = this.models[this.modelIndex].yrotation;
-    this.zrotation = this.models[this.modelIndex].zrotation;
-    this.spin = this.models[this.modelIndex].spin;
-    this.spinAxis = this.models[this.modelIndex].spin_axis;
+    this.deepClone(this.currentModel, this.models[this.modelIndex]);
   }
 
   updateSceneValues() {
-    this.models[this.modelIndex].name = this.modelName;
-    this.models[this.modelIndex].xposition = this.xposition;
-    this.models[this.modelIndex].yposition = this.yposition;
-    this.models[this.modelIndex].zposition = this.zposition;
-    this.models[this.modelIndex].scale = this.scale;
-    this.models[this.modelIndex].xrotation = this.xrotation;
-    this.models[this.modelIndex].yrotation = this.yrotation;
-    this.models[this.modelIndex].zrotation = this.zrotation;
-    this.models[this.modelIndex].spin = this.spin;
-    this.models[this.modelIndex].spin_axis = this.spinAxis;
-
-    this.scenes[this.sceneIndex].environment.skybox_type = this.skyboxType;
-    this.scenes[this.sceneIndex].environment.skybox_size = this.skyboxSize;
-    this.scenes[this.sceneIndex].environment.skybox_position = this.skyboxPosition;
-    this.scenes[this.sceneIndex].environment.camera_height = this.cameraHeight;
+    this.deepClone(this.models[this.modelIndex], this.currentModel);
+    this.deepClone(this.scenes[this.sceneIndex].environment, this.currentEnvironment);
   }
+
+  deepClone(dest: any, src: any) {
+    dest = JSON.parse(JSON.stringify(src))
+  }
+
+  /*
+  deepCloneModel(dest: Model, src: Model) {
+    dest.name = src.name;
+    dest.xposition = src.xposition;
+    dest.yposition = src.yposition;
+    dest.zposition = src.zposition;
+    dest.scale = src.scale;
+    dest.xrotation = src.xrotation;
+    dest.yrotation = src.yrotation;
+    dest.zrotation = src.zrotation;
+    dest.spin = src.spin;
+    dest.spin_axis = src.spin_axis;
+  }
+
+  deepCloneEnvironment(dest: Environment, src: Environment) {
+    dest.skybox_position = src.skybox_position;
+    dest.skybox_size = src.skybox_size;
+    dest.skybox_type = src.skybox_type;
+    dest.camera_height = src.camera_height;
+  }
+  */
 
 }

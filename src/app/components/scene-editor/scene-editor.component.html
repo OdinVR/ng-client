@@ -36,7 +36,7 @@
                 </td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()" [(ngModel)]='modelName' mdInput onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()" [(ngModel)]='currentModel.name' mdInput>
                   </md-input-container>
                 </td>
               </tr>
@@ -46,7 +46,7 @@
                 <td class="list-item"><span>X Position</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()" [(ngModel)]='xposition' mdInput onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()" [(ngModel)]='currentModel.xposition' mdInput onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -56,7 +56,7 @@
                 <td class="list-item"><span>Y Position</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()" mdInput [(ngModel)]='yposition' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()" mdInput [(ngModel)]='currentModel.yposition' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -66,7 +66,7 @@
                 <td class="list-item"><span>Z Position</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='zposition' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentModel.zposition' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -76,7 +76,7 @@
                 <td class="list-item"><span>Scale</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='scale' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentModel.scale' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -86,7 +86,7 @@
                 <td class="list-item"><span>X Rotation</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='xrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentModel.xrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -96,7 +96,7 @@
                 <td class="list-item"><span>Y Rotation</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='yrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentModel.yrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -106,7 +106,7 @@
                 <td class="list-item"><span>Z Rotation</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='zrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentModel.zrotation' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -115,7 +115,7 @@
               <tr>
                 <td class="list-item"><span>Spin</span></td>
                 <td class="text-right list-item">
-                  <span><md-slide-toggle [(ngModel)]='spin' (ngModelChange)="updateSceneValues()"></md-slide-toggle></span>
+                  <span><md-slide-toggle [(ngModel)]='currentModel.spin' (ngModelChange)="updateSceneValues()"></md-slide-toggle></span>
                 </td>
               </tr>
 
@@ -124,7 +124,7 @@
                 <td class="list-item"><span>Spin Axis</span></td>
                 <td class="text-right list-item">
                   <span>
-                    <md-select [(ngModel)]="spinAxis" (ngModelChange)="updateSceneValues()">
+                    <md-select [(ngModel)]="currentModel.spin_axis" (ngModelChange)="updateSceneValues()">
                       <md-option *ngFor="let option of spinAxisOptions" [value]="option.value">
                         {{ option.viewValue }}
                       </md-option>
@@ -148,7 +148,7 @@
                 <td class="list-item"><span>Skybox Type</span></td>
                 <td class="text-right list-item">
                   <span>
-                    <md-select [(ngModel)]="skyboxType" (ngModelChange)="updateSceneValues()">
+                    <md-select [(ngModel)]="currentEnvironment.skybox_type" (ngModelChange)="updateSceneValues()">
                       <md-option *ngFor="let option of skyboxTypeOptions" [value]="option.value">
                         {{ option.viewValue }}
                       </md-option>
@@ -162,7 +162,7 @@
                 <td class="list-item"><span>Skybox Size</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()" mdInput [(ngModel)]='skyboxSize' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()" mdInput [(ngModel)]='currentEnvironment.skybox_size' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -172,7 +172,7 @@
                 <td class="list-item"><span>Skybox Position</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='skyboxPosition' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentEnvironment.skybox_position' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
@@ -182,7 +182,7 @@
                 <td class="list-item"><span>Camera Height</span></td>
                 <td class="text-right">
                   <md-input-container>
-                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='cameraHeight' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentEnvironment.camera_height' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </md-input-container>
                 </td>
               </tr>
