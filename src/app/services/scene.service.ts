@@ -69,6 +69,51 @@ export class SceneService {
     return newScene;
   }
 
+  public createDummyScene2(): Scene {
+    let shroud: Model = {
+      name: 'Shroud',
+      url: 'test url',
+      xposition: 5,
+      yposition: 10,
+      zposition: 5,
+      scale: 1,
+      xrotation: 90,
+      yrotation: 180,
+      zrotation: 0,
+      spin: true,
+      spin_axis: 'x'
+    }
+
+    let quasar: Model = {
+      name: 'Quasar',
+      url: 'test url',
+      xposition: 2,
+      yposition: 4,
+      zposition: -3,
+      scale: 0.8,
+      xrotation: 270,
+      yrotation: 30,
+      zrotation: -90,
+      spin: true,
+      spin_axis: 'z'
+    }
+
+    let env: Environment = {
+      skybox_type: 'grid',
+      skybox_position: 25,
+      skybox_size: 50,
+      camera_height: 1.8
+    }
+
+    let newScene: Scene = {
+      name: 'test scene 2',
+      models: [ shroud, quasar ],
+      environment: env
+    }
+
+    return newScene;
+  }
+
   public getEmptyScene(): Scene {
     return {
       name: 'New scene',

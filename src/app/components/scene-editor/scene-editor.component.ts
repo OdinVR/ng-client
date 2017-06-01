@@ -48,11 +48,14 @@ export class SceneEditorComponent implements OnInit {
     this.models = this.scenes[this.sceneIndex].models;
 
     this.scenes.push(this._sceneService.createDummyScene());
+    this.scenes.push(this._sceneService.createDummyScene2());
   }
 
   selectScene(index: number) {
     this.sceneIndex = index;
-    this.models = this.scenes[this.sceneIndex].models;
+    this.models = this.scenes[index].models;
+    this.currentModel = this.models[0];
+    this.currentEnvironment = this.scenes[index].environment;
   }
 
   selectModel(index: number) {
