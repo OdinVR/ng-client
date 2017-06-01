@@ -18,6 +18,8 @@ export class SceneEditorComponent implements OnInit {
     {value: 'milky', viewValue: 'Space'}
   ];
 
+  private scenes:string[] = [ 'Scene 1', 'Scene 2'];
+
   /* Scene properties */
   private sceneName: string;
 
@@ -59,6 +61,10 @@ export class SceneEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  selectScene(index: number) {
+    this.sceneName = this.scenes[index];
   }
 
 }

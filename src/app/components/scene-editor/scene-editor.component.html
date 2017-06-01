@@ -7,7 +7,7 @@
 
             <div class="button-row">
               <div class="flex-left">
-                <button md-raised-button color="accent">Scene</button>
+                <a md-button color="accent" [mdMenuTriggerFor]="sceneMenu" class="dropdown-toggle">Scene<md-icon>arrow_drop_down</md-icon></a>
                 &nbsp;&nbsp;&nbsp;
                 <md-input-container>
                   <input [(ngModel)]='sceneName' mdInput class="scene-name">
@@ -207,4 +207,10 @@
 <md-menu #menu="mdMenu">
   <button md-menu-item>Item 1</button>
   <button md-menu-item>Item 2</button>
+</md-menu>
+
+<md-menu #sceneMenu="mdMenu" yPosition="above" [overlapTrigger]="false">
+  <button md-menu-item *ngFor="let scene of scenes; let i = index" (click)="selectScene(i)">
+    {{scene}}
+  </button>
 </md-menu>
