@@ -24,5 +24,15 @@
 }
 
 .button-row {
-    width: 100%;
+    display: flex;
+}
+
+.flex-left {
+    padding-left: 10px;
+    width: 100px;
+}
+
+.flex-right {
+    width: 400px;
+    margin-left: auto;
 }
