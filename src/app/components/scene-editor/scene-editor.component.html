@@ -10,7 +10,7 @@
                 <md-input-container color="accent">
                   <input (keyup)="updateSceneValues()"  [(ngModel)]='scenes[sceneIndex].name' mdInput class="scene-name">
                 </md-input-container>
-                <button md-icon-button color="accent" mdTooltip="Delete scene" (click)="openDeleteDialog()"><md-icon>delete</md-icon></button>
+                <button md-icon-button color="accent" mdTooltip="Delete scene" (click)="openDeleteSceneDialog()"><md-icon>delete</md-icon></button>
                 <a md-icon-button color="accent" mdTooltip="Download scene" (click)="setSceneDownload()" [href]="downloadJsonHref" download="{{scenes[sceneIndex].name}}.json"><md-icon>file_download</md-icon></a>
                 <button md-icon-button color="accent" mdTooltip="New scene" (click)="addNewScene()"><md-icon>library_add</md-icon></button>
               </td>
@@ -36,6 +36,7 @@
                   <button md-raised-button [mdMenuTriggerFor]="modelsMenu">Models<md-icon>arrow_drop_down</md-icon></button>
                 </td>
                 <td class="text-right">
+                  <button md-icon-button color="primary" mdTooltip="Delete model" (click)="openDeleteModelDialog()"><md-icon>delete</md-icon></button>
                   <md-input-container>
                     <input (keyup)="updateSceneValues()" [(ngModel)]='currentModel.name' mdInput>
                   </md-input-container>

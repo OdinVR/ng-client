@@ -43,6 +43,7 @@ export class SceneEditorComponent implements OnInit {
     this.sceneIndex = 0;
     this.scenes = [];
     
+    this.modelIndex = 0;
     this.currentModel = new Model();
     this.currentEnvironment = new Environment();
   }
@@ -98,7 +99,15 @@ export class SceneEditorComponent implements OnInit {
   deleteScene(index: number) {
     this.scenes.splice(index, 1);
     if(this.scenes.length == 0) this.scenes.push(this._sceneService.getEmptyScene());
-    this.selectScene(0);
+    this.selectScene(this.scenes.length-1);
+  }
+
+  deleteModel(index: number) {
+    this.models.splice(index, 1);
+    if(this.models.length != 0) { 
+      this.modelIndex = this.models.length-1;
+      this.selectModel(this.modelIndex);
+    }
   }
 
   setSceneDownload() {
@@ -109,12 +118,20 @@ export class SceneEditorComponent implements OnInit {
     dest = JSON.parse(JSON.stringify(src))
   }
 
-  openDeleteDialog() {
+  openDeleteSceneDialog() {
     this._dialogService
       .confirm('Delete Scene Dialog', 'Are you sure you want to delete this scene?')
       .subscribe(res => {
         if(res) this.deleteScene(this.sceneIndex);
       });
+  }
+
+  openDeleteModelDialog() {
+    this._dialogService
+      .confirm('Delete Model Dialog', 'Are you sure you want to delete this model?')
+      .subscribe(res => {
+        if(res) this.deleteModel(this.modelIndex);
+      })
   }
 
 }
