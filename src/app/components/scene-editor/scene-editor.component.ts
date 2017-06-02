@@ -55,6 +55,24 @@ export class SceneEditorComponent implements OnInit {
     this.scenes.push(this._sceneService.createDummyScene2());
   }
 
+  addNewScene() {
+    let newScene: Scene = this._sceneService.getEmptyScene();
+    let sceneNames: string[] = [];
+    this.scenes.forEach(scene => sceneNames.push(scene.name));
+    sceneNames.sort();
+    let greatestDuplicate: number = 0;
+    sceneNames.forEach(sceneName => {
+      if(sceneName.startsWith('New scene')) {
+        let num:number = +sceneName.substr(sceneName.lastIndexOf(' '));
+        if( num >= greatestDuplicate ) greatestDuplicate = num;
+        greatestDuplicate++
+      }
+    });
+    if(greatestDuplicate != 0) newScene.name = newScene.name.concat(' - '+greatestDuplicate);
+    console.log(newScene.name);
+    this.scenes.push(newScene);
+  }
+
   selectScene(index: number) {
     this.sceneIndex = index;
     this.models = this.scenes[index].models;
