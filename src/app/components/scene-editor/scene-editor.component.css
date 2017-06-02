@@ -23,22 +23,8 @@
     line-height: 35px;
 }
 
-.button-row {
-    display: flex;
-}
-
 .button-row button {
     margin-bottom: 5px;
-}
-
-.flex-left {
-    padding-left: 10px;
-    width: 400px;
-}
-
-.flex-right {
-    width: 400px;
-    margin-left: auto;
 }
 
 .scene-name {

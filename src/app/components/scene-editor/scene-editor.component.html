@@ -4,23 +4,22 @@
       <div class="properties-content">
         <div class="container-fluid">
           <div class="row">
-
-            <div class="button-row">
-              <div class="flex-left">
+            <table class="table">
+              <td class="text-left">
                 <a md-button color="accent" [mdMenuTriggerFor]="sceneMenu" class="dropdown-toggle">Scenes<md-icon>arrow_drop_down</md-icon></a>
-                &nbsp;&nbsp;&nbsp;
                 <md-input-container color="accent">
                   <input (keyup)="updateSceneValues()"  [(ngModel)]='scenes[sceneIndex].name' mdInput class="scene-name">
                 </md-input-container>
-              </div>
+                <button md-icon-button color="accent"><md-icon>delete</md-icon></button>
+                <button md-icon-button color="accent"><md-icon>file_download</md-icon></button>
+              </td>
 
-              <div class="flex-right">
+              <td class="text-right button-row">
                 <button md-raised-button color="primary"><md-icon>update</md-icon>&nbsp;Update</button>
                 <button md-raised-button color="primary"><md-icon>visibility</md-icon>&nbsp;Preview</button>
                 <button md-raised-button color="accent"><md-icon>file_upload</md-icon>&nbsp;Upload Model</button>
-              </div>    
-            </div>
-
+              </td>
+            </table>   
             <hr>
           </div>
 
@@ -201,9 +200,9 @@
 </md-menu>
 
 <md-menu #sceneMenu="mdMenu" yPosition="below" [overlapTrigger]="false">
-  <button md-menu-item *ngFor="let scene of scenes; let i = index" (click)="selectScene(i)">
+  <span md-menu-item *ngFor="let scene of scenes; let i = index" (click)="selectScene(i)">
     {{scene.name}}
-  </button>
+  </span>
 </md-menu>
 
 <ng-template #noModelsError>
