@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SceneService } from '../../services/scene.service';
+import { DialogService } from '../../services/dialog.service';
 import { Model } from '../../interfaces/model';
 import { Environment } from '../../interfaces/environment';
 import { Scene } from '../../interfaces/scene';
@@ -34,7 +35,7 @@ export class SceneEditorComponent implements OnInit {
   /* Environment properties */
   private currentEnvironment: Environment;
 
-  constructor( private _sceneService: SceneService ) {
+  constructor( private _sceneService: SceneService, private _dialogService: DialogService ) {
     this.sceneIndex = 0;
     this.scenes = [];
     
@@ -74,6 +75,14 @@ export class SceneEditorComponent implements OnInit {
 
   deepClone(dest: any, src: any) {
     dest = JSON.parse(JSON.stringify(src))
+  }
+
+  openDeleteDialog() {
+    this._dialogService
+      .confirm('Delete Scene Dialog', 'Are you sure you want to delete this scene?')
+      .subscribe(res => {
+        console.log(res);
+      })
   }
 
   /*
