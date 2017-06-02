@@ -1,4 +1,7 @@
-<p>{{ title }}</p>
-<p>{{ message }}</p>
-<button type="button" md-raised-button (click)="dialogRef.close(true)">OK</button>
-<button type="button" md-button (click)="dialogRef.close()">Cancel</button>
+<h2 class="text-center">{{title}}</h2>
+<h3 class="text-center">{{message}}</h3>
+<hr>
+<div class="row text-center">
+    <button type="button" md-raised-button color="warn" (click)="dialogRef.close(true)">Delete</button>
+    <button type="button" md-button (click)="dialogRef.close(false)">Cancel</button>
+</div>

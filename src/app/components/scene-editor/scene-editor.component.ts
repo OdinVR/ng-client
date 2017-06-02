@@ -73,6 +73,12 @@ export class SceneEditorComponent implements OnInit {
     this.deepClone(this.scenes[this.sceneIndex].environment, this.currentEnvironment);
   }
 
+  deleteCurrentScene() {
+    this.scenes.splice(this.sceneIndex, 1);
+    if(this.scenes.length == 0) this.scenes.push(this._sceneService.getEmptyScene());
+    this.selectScene(0);
+  }
+
   deepClone(dest: any, src: any) {
     dest = JSON.parse(JSON.stringify(src))
   }
@@ -81,7 +87,7 @@ export class SceneEditorComponent implements OnInit {
     this._dialogService
       .confirm('Delete Scene Dialog', 'Are you sure you want to delete this scene?')
       .subscribe(res => {
-        console.log(res);
+        if(res) this.deleteCurrentScene();
       })
   }
 
