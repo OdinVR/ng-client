@@ -4,6 +4,7 @@ import { DialogService } from '../../services/dialog.service';
 import { Model } from '../../interfaces/model';
 import { Environment } from '../../interfaces/environment';
 import { Scene } from '../../interfaces/scene';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scene-editor',
@@ -35,7 +36,10 @@ export class SceneEditorComponent implements OnInit {
   /* Environment properties */
   private currentEnvironment: Environment;
 
-  constructor( private _sceneService: SceneService, private _dialogService: DialogService ) {
+  /* Href for scene download */
+  private downloadJsonHref;
+
+  constructor( private _sceneService: SceneService, private _dialogService: DialogService, private _sanitizer: DomSanitizer ) {
     this.sceneIndex = 0;
     this.scenes = [];
     
@@ -73,10 +77,14 @@ export class SceneEditorComponent implements OnInit {
     this.deepClone(this.scenes[this.sceneIndex].environment, this.currentEnvironment);
   }
 
-  deleteCurrentScene() {
-    this.scenes.splice(this.sceneIndex, 1);
+  deleteScene(index: number) {
+    this.scenes.splice(index, 1);
     if(this.scenes.length == 0) this.scenes.push(this._sceneService.getEmptyScene());
     this.selectScene(0);
+  }
+
+  setSceneDownload() {
+    this.downloadJsonHref = this._sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(JSON.stringify(this.scenes[this.sceneIndex])));
   }
 
   deepClone(dest: any, src: any) {
@@ -87,30 +95,8 @@ export class SceneEditorComponent implements OnInit {
     this._dialogService
       .confirm('Delete Scene Dialog', 'Are you sure you want to delete this scene?')
       .subscribe(res => {
-        if(res) this.deleteCurrentScene();
-      })
+        if(res) this.deleteScene(this.sceneIndex);
+      });
   }
-
-  /*
-  deepCloneModel(dest: Model, src: Model) {
-    dest.name = src.name;
-    dest.xposition = src.xposition;
-    dest.yposition = src.yposition;
-    dest.zposition = src.zposition;
-    dest.scale = src.scale;
-    dest.xrotation = src.xrotation;
-    dest.yrotation = src.yrotation;
-    dest.zrotation = src.zrotation;
-    dest.spin = src.spin;
-    dest.spin_axis = src.spin_axis;
-  }
-
-  deepCloneEnvironment(dest: Environment, src: Environment) {
-    dest.skybox_position = src.skybox_position;
-    dest.skybox_size = src.skybox_size;
-    dest.skybox_type = src.skybox_type;
-    dest.camera_height = src.camera_height;
-  }
-  */
 
 }
