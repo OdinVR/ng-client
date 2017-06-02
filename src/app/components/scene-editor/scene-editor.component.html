@@ -10,14 +10,15 @@
                 <md-input-container color="accent">
                   <input (keyup)="updateSceneValues()"  [(ngModel)]='scenes[sceneIndex].name' mdInput class="scene-name">
                 </md-input-container>
-                <button md-icon-button color="accent"><md-icon>delete</md-icon></button>
-                <button md-icon-button color="accent"><md-icon>file_download</md-icon></button>
+                <button md-icon-button color="accent" mdTooltip="Delete scene"><md-icon>delete</md-icon></button>
+                <button md-icon-button color="accent" mdTooltip="Download scene"><md-icon>file_download</md-icon></button>
               </td>
 
               <td class="text-right button-row">
                 <button md-raised-button color="primary"><md-icon>update</md-icon>&nbsp;Update</button>
                 <button md-raised-button color="primary"><md-icon>visibility</md-icon>&nbsp;Preview</button>
                 <button md-raised-button color="accent"><md-icon>file_upload</md-icon>&nbsp;Upload Model</button>
+                &nbsp;
               </td>
             </table>   
             <hr>
