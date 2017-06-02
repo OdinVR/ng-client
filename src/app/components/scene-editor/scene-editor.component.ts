@@ -25,7 +25,6 @@ export class SceneEditorComponent implements OnInit {
   /* Scene properties */
   private sceneIndex: number;
   private scenes: Scene[];
-  private sceneNames:string[] = [ 'New Scene', 'Scene 1', 'Scene 2'];
 
   /* Model properties */
   private models: Model[];

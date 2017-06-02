@@ -10,7 +10,7 @@
                 <a md-button color="accent" [mdMenuTriggerFor]="sceneMenu" class="dropdown-toggle">Scenes<md-icon>arrow_drop_down</md-icon></a>
                 &nbsp;&nbsp;&nbsp;
                 <md-input-container color="accent">
-                  <input (keyup)="updateSceneValues()"  [(ngModel)]='sceneNames[sceneIndex]' mdInput class="scene-name">
+                  <input (keyup)="updateSceneValues()"  [(ngModel)]='scenes[sceneIndex].name' mdInput class="scene-name">
                 </md-input-container>
               </div>
 
