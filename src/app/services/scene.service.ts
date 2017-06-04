@@ -147,7 +147,7 @@ export class SceneService {
 
   private generateSessionCode(): string {
     //Oh fun, let's do some discreet math!
-    let code: string;
+    let code: string = "";
 
     for(let i = 1; i<=8; i++) {
       let characterSet = this.codeCharacters[this.getRandomInt(0, 2)]; //Choose one of the three sets

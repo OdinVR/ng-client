@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SceneService } from '../../services/scene.service';
 import { DialogService } from '../../services/dialog.service';
+import { DataService } from '../../services/data.service';
 import { Model } from '../../interfaces/model';
 import { Environment } from '../../interfaces/environment';
+import { Presentation } from '../../interfaces/presentation';
 import { Scene } from '../../interfaces/scene';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
@@ -24,6 +26,9 @@ export class SceneEditorComponent implements OnInit {
     {value: 'milky', viewValue: 'Space'}
   ];
 
+  /* Presentation */
+  private presentation: Presentation;
+
   /* Scene properties */
   private sceneIndex: number;
   private scenes: Scene[];
@@ -39,7 +44,10 @@ export class SceneEditorComponent implements OnInit {
   /* Href for scene download */
   private downloadJsonHref;
 
-  constructor( private _sceneService: SceneService, private _dialogService: DialogService, private _sanitizer: DomSanitizer ) {
+  constructor(private _dataService: DataService,
+              private _sceneService: SceneService, 
+              private _dialogService: DialogService, 
+              private _sanitizer: DomSanitizer ) {
     this.sceneIndex = 0;
     this.scenes = [];
     
@@ -49,6 +57,11 @@ export class SceneEditorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._dataService.currentPresentation.subscribe(presentation => {
+      this.presentation = presentation;
+      this.presentation.scenes = this.scenes;
+    });
+
     this.scenes.push(this._sceneService.getEmptyScene());
     this.models = this.scenes[this.sceneIndex].models;
 
