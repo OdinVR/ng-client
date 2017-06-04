@@ -105,7 +105,7 @@ export class SceneEditorComponent implements OnInit {
   }
 
   updateSceneValues() {
-    this.deepClone(this.models[this.modelIndex], this.currentModel);
+    if(this.models.length != 0) this.deepClone(this.models[this.modelIndex], this.currentModel);
     this.deepClone(this.scenes[this.sceneIndex].environment, this.currentEnvironment);
   }
 
