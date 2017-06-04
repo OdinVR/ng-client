@@ -18,3 +18,8 @@
 .navbar-deep-purple {
   background-color: #673AB7 !important;
 }
+
+.navbar-text {
+  font-weight: 500;
+  font-size: 16px;
+}
