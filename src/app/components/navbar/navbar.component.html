@@ -6,18 +6,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand"><img src="../../assets/img/OdinVR.png" alt=""></span>
-      <button md-button href="javascript:void(0)" class="nav">
+      <span class="navbar-brand hidden-sm"><img src="../../assets/img/OdinVR.png" alt=""></span>
+      <button md-button href="javascript:void(0)" class="nav hidden-sm">
         <span >OdinVR</span>
       </button>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
 
-      <p class="nav navbar-text navbar-username">
+      <p class="nav navbar-text navbar-username visible-lg">
         Hello, {{presentation.author}}
       </p>
 
-      <ul class="nav navbar-nav navbar-center">
+      <p class="nav navbar-text navbar-username">
+        <input type="text" class="text-center navbar-input" mdInput [(ngModel)]="presentation.name">
+      </p>
+
+      <ul class="nav navbar-nav navbar-center hidden">
         <li class="nav navbar-text navbar-input">
           <input type="text" class="text-center" mdInput [(ngModel)]="presentation.name">
         </li>
