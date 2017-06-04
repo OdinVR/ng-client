@@ -2,9 +2,16 @@ import { Injectable } from '@angular/core';
 import { Model } from '../interfaces/model';
 import { Environment } from '../interfaces/environment';
 import { Scene } from '../interfaces/scene';
+import { Presentation } from '../interfaces/presentation';
 
 @Injectable()
 export class SceneService {
+
+  private codeCharacters = [
+    'abcdefghijklmnopqrstuvwxyz'.split(''),
+    'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split(''),
+    '0123456789'.split('')
+  ]
 
   constructor() {
     console.log('Scene service initialized ...');
@@ -125,6 +132,32 @@ export class SceneService {
         camera_height: 1.5
       }
     }
+  }
+
+  public getEmptyPresentation(): Presentation {
+    let newPresentation: Presentation = {
+      name: "New Presentation",
+      sessionCode: this.generateSessionCode(),
+      author: "Benedict Cumbersnack",
+      scenes: []
+    }
+
+    return newPresentation;
+  }
+
+  private generateSessionCode(): string {
+    //Oh fun, let's do some discreet math!
+    let code: string;
+
+    for(let i = 1; i<=8; i++) {
+      let characterSet = this.codeCharacters[this.getRandomInt(0, 2)]; //Choose one of the three sets
+      code = code+characterSet[this.getRandomInt(0, characterSet.length-1)];
+    }
+    return code;
+  }
+
+  private getRandomInt(min: number, max: number): number {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
 }
