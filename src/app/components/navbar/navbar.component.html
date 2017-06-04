@@ -6,9 +6,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <button md-button href="javascript:void(0)">
-        <span class="navbar-brand"><img src="../../assets/img/OdinVR.png" alt=""></span>
-        <span class="navbar-brand">OdinVR</span>
+      <span class="navbar-brand"><img src="../../assets/img/OdinVR.png" alt=""></span>
+      <button md-button href="javascript:void(0)" class="nav">
+        <span >OdinVR</span>
       </button>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -24,12 +24,14 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+
         <li>
-          <span class="session-code"><strong>Session code: {{presentation.sessionCode}}</strong></span>
+          <button md-raised-button class="nav nav-md-raised-button"><span>Session code: {{presentation.sessionCode}}</span></button>
         </li>
 
+
         <li class="dropdown">
-          <a md-button [mdMenuTriggerFor]="menu" class="dropdown-toggle"><md-icon>menu</md-icon>&nbsp;Menu</a>
+          <button md-button [mdMenuTriggerFor]="menu" class="nav"><md-icon>menu</md-icon>&nbsp;Menu</button>
           <md-menu #menu="mdMenu" yPosition="above" [overlapTrigger]="false">
             <button md-menu-item>
               <md-icon>file_upload</md-icon>
