@@ -13,12 +13,17 @@
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
 
-      <p class="nav navbar-text">
+      <p class="nav navbar-text navbar-username">
         Hello, {{presentation.author}}
       </p>
-      
-      <ul class="nav navbar-nav navbar-right">
 
+      <ul class="nav navbar-nav navbar-center">
+        <li class="nav navbar-text navbar-input">
+          <input type="text" mdInput [(ngModel)]="presentation.name">
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
         <li>
           <span class="session-code"><strong>Session code: {{presentation.sessionCode}}</strong></span>
         </li>
@@ -26,7 +31,6 @@
         <li class="dropdown">
           <a md-button [mdMenuTriggerFor]="menu" class="dropdown-toggle"><md-icon>menu</md-icon>&nbsp;Menu</a>
           <md-menu #menu="mdMenu" yPosition="above" [overlapTrigger]="false">
-
             <button md-menu-item>
               <md-icon>file_upload</md-icon>
               <span>Import presentation</span>

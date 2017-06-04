@@ -138,11 +138,15 @@ export class SceneService {
     let newPresentation: Presentation = {
       name: "New Presentation",
       sessionCode: this.generateSessionCode(),
-      author: "Benedict Cumbersnack",
+      author: this.getUsername(),
       scenes: []
     }
 
     return newPresentation;
+  }
+
+  private getUsername(): string {
+    return "Benedict Cumbersnack";
   }
 
   private generateSessionCode(): string {
