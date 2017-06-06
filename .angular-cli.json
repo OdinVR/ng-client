@@ -36,9 +36,11 @@
         "../node_modules/webvr-polyfill/build/webvr-polyfill.js",
         "../scripts/webvr-manager.js",
         "../node_modules/three/examples/js/loaders/ColladaLoader.js",
+        "../scripts/reticulum.js",
         "../scripts/rendering.js",
         "../scripts/scenebuilder.js",
-        "../scripts/scene.js"
+        "../scripts/scene.js",
+        "../scripts/myimptest.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
