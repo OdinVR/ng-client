@@ -76,8 +76,14 @@ export class SceneEditorComponent implements OnInit {
   addNewScene() {
     let newScene: Scene = null;
 
+    //Get empty scene
     this._sceneService.getEmptyScene().subscribe(scene => {
       newScene = scene
+
+      //Get environment for the scene
+      this._sceneService.getEnvironment(newScene._id).subscribe(env => {
+        newScene.environment = env
+      })
 
       let sceneNames: string[] = [];
       this.scenes.forEach(scene => sceneNames.push(scene.name));

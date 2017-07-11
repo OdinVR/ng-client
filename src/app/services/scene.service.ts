@@ -125,8 +125,9 @@ export class SceneService {
     return newScene;
   }
 
-  public getEnvironment(sceneID:String, envID: String) {
-
+  public getEnvironment(sceneID:String) {
+    return this._http.get(this.dbUrl + '/api/v1/scene/'+sceneID+'/environment')
+      .map(res => res.json());
   }
 
   public getEmptyScene() {
