@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SceneService {
 
+  private dbUrl: String = 'http://52.14.179.178:6606';
+
   private codeCharacters = [
     'abcdefghijklmnopqrstuvwxyz'.split(''),
     'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split(''),
@@ -123,9 +125,13 @@ export class SceneService {
     return newScene;
   }
 
+  public getEnvironment(sceneID:String, envID: String) {
+
+  }
+
   public getEmptyScene() {
     
-    return this._http.get('http://52.14.179.178:6606/api/v1/newscene')
+    return this._http.get(this.dbUrl + '/api/v1/newscene')
       .map(res => res.json());
 
     /*
