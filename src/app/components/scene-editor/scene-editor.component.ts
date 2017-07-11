@@ -123,9 +123,11 @@ export class SceneEditorComponent implements OnInit {
     if(this.scenes.length == 0) {
       this._sceneService.getEmptyScene().subscribe(scene => {
         this.scenes.push(scene);
+        this.selectScene(this.scenes.length-1);
       })
+    } else {
+      this.selectScene(this.scenes.length-1);
     }
-    this.selectScene(this.scenes.length-1);
   }
 
   deleteModel(index: number) {
