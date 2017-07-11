@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { Model } from '../interfaces/model';
 import { Environment } from '../interfaces/environment';
 import { Scene } from '../interfaces/scene';
 import { Presentation } from '../interfaces/presentation';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SceneService {
@@ -13,7 +15,7 @@ export class SceneService {
     '0123456789'.split('')
   ]
 
-  constructor() {
+  constructor(private _http: Http) {
     console.log('Scene service initialized ...');
   }
 
@@ -69,7 +71,7 @@ export class SceneService {
 
     let newScene: Scene = {
       name: 'test scene',
-      models: [ lagg, basilisk, saracen ],
+      models: [lagg, basilisk, saracen],
       environment: env
     }
 
@@ -114,14 +116,19 @@ export class SceneService {
 
     let newScene: Scene = {
       name: 'test scene 2',
-      models: [ shroud, quasar ],
+      models: [shroud, quasar],
       environment: env
     }
 
     return newScene;
   }
 
-  public getEmptyScene(): Scene {
+  public getEmptyScene() {
+    
+    return this._http.get('http://52.14.179.178:6606/api/v1/newscene')
+      .map(res => res.json());
+
+    /*
     return {
       name: 'New scene',
       models: [],
@@ -132,6 +139,7 @@ export class SceneService {
         camera_height: 1.5
       }
     }
+    */
   }
 
   public getEmptyPresentation(): Presentation {
@@ -153,15 +161,15 @@ export class SceneService {
     //Oh fun, let's do some discreet math!
     let code: string = "";
 
-    for(let i = 1; i<=8; i++) {
+    for (let i = 1; i <= 8; i++) {
       let characterSet = this.codeCharacters[this.getRandomInt(0, 2)]; //Choose one of the three sets
-      code = code+characterSet[this.getRandomInt(0, characterSet.length-1)];
+      code = code + characterSet[this.getRandomInt(0, characterSet.length - 1)];
     }
     return code;
   }
 
   private getRandomInt(min: number, max: number): number {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
 }

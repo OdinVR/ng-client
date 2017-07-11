@@ -2,7 +2,7 @@
   <md-card-content>
     <div class="properties-container">
       <div class="properties-content">
-        <div class="container-fluid">
+        <div *ngIf="scenes[sceneIndex]" class="container-fluid">
           <div class="row">
             <table class="table">
               <tr class="text-center button-row">

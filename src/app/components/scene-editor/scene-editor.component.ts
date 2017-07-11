@@ -62,29 +62,38 @@ export class SceneEditorComponent implements OnInit {
       this.presentation.scenes = this.scenes;
     });
 
-    this.scenes.push(this._sceneService.getEmptyScene());
-    this.models = this.scenes[this.sceneIndex].models;
+    this._sceneService.getEmptyScene().subscribe(scene => {
+      this.scenes.push(scene);
 
-    this.scenes.push(this._sceneService.createDummyScene());
-    this.scenes.push(this._sceneService.createDummyScene2());
+      console.log('scenes: ', this.scenes)
+      this.models = this.scenes[this.sceneIndex].models;
+
+      //this.scenes.push(this._sceneService.createDummyScene());
+      //this.scenes.push(this._sceneService.createDummyScene2());
+    })
   }
 
   addNewScene() {
-    let newScene: Scene = this._sceneService.getEmptyScene();
-    let sceneNames: string[] = [];
-    this.scenes.forEach(scene => sceneNames.push(scene.name));
-    sceneNames.sort();
-    let greatestDuplicate: number = 0;
-    sceneNames.forEach(sceneName => {
-      if(sceneName.startsWith('New scene')) {
-        let num:number = +sceneName.substr(sceneName.lastIndexOf(' '));
-        if( num >= greatestDuplicate ) greatestDuplicate = num;
-        greatestDuplicate++
-      }
-    });
-    if(greatestDuplicate != 0) newScene.name = newScene.name.concat(' - '+greatestDuplicate);
-    console.log(newScene.name);
-    this.scenes.push(newScene);
+    let newScene: Scene = null;
+
+    this._sceneService.getEmptyScene().subscribe(scene => {
+      newScene = scene
+
+      let sceneNames: string[] = [];
+      this.scenes.forEach(scene => sceneNames.push(scene.name));
+      sceneNames.sort();
+      let greatestDuplicate: number = 0;
+      sceneNames.forEach(sceneName => {
+        if(sceneName.startsWith('New Scene')) {
+          let num:number = +sceneName.substr(sceneName.lastIndexOf(' '));
+          if( num >= greatestDuplicate ) greatestDuplicate = num;
+          greatestDuplicate++
+        }
+      });
+      if(greatestDuplicate != 0) newScene.name = newScene.name.concat(' - '+greatestDuplicate);
+      console.log(newScene.name);
+      this.scenes.push(newScene);
+    })
   }
 
   selectScene(index: number) {
@@ -111,7 +120,11 @@ export class SceneEditorComponent implements OnInit {
 
   deleteScene(index: number) {
     this.scenes.splice(index, 1);
-    if(this.scenes.length == 0) this.scenes.push(this._sceneService.getEmptyScene());
+    if(this.scenes.length == 0) {
+      this._sceneService.getEmptyScene().subscribe(scene => {
+        this.scenes.push(scene);
+      })
+    }
     this.selectScene(this.scenes.length-1);
   }
 
