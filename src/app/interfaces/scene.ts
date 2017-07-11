@@ -5,5 +5,6 @@ export class Scene {
     _id?: string;
     name: string;
     models: Model[];
+    environmentId?: string;
     environment: Environment;
 }

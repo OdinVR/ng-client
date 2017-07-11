@@ -83,6 +83,7 @@ export class SceneEditorComponent implements OnInit {
       //Get environment for the scene
       this._sceneService.getEnvironment(newScene._id).subscribe(env => {
         newScene.environment = env
+        console.log('new scene: ', newScene)
       })
 
       let sceneNames: string[] = [];
