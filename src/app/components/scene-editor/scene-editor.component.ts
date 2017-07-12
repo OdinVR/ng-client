@@ -63,11 +63,19 @@ export class SceneEditorComponent implements OnInit {
     });
 
     this._sceneService.getEmptyScene().subscribe(scene => {
-      this.scenes.push(scene);
 
-      console.log('scenes: ', this.scenes)
-      this.models = this.scenes[this.sceneIndex].models;
+      let newScene = scene
 
+      this._sceneService.getEnvironment(newScene._id).subscribe(env => {
+        newScene.environment = env
+        this.scenes.push(scene);
+        this.selectScene(this.sceneIndex)
+
+        this.models = this.scenes[this.sceneIndex].models;
+        console.log('currentEnv: ', this.currentEnvironment)
+        console.log('scenes: ', this.scenes)
+      })
+      
       //this.scenes.push(this._sceneService.createDummyScene());
       //this.scenes.push(this._sceneService.createDummyScene2());
     })
@@ -83,6 +91,7 @@ export class SceneEditorComponent implements OnInit {
       //Get environment for the scene
       this._sceneService.getEnvironment(newScene._id).subscribe(env => {
         newScene.environment = env
+        this.updateSceneValues()
         console.log('new scene: ', newScene)
       })
 
