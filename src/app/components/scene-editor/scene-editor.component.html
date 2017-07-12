@@ -148,7 +148,7 @@
 
               <!-- Skybox type -->
               <tr>
-                <td class="list-item"><span>Skybox Type</span></td>
+                <td class="list-item"><span>Skysphere Type</span></td>
                 <td class="text-right list-item">
                   <span>
                     <md-select [(ngModel)]="currentEnvironment.skybox_type" (ngModelChange)="updateSceneValues()">
@@ -162,7 +162,7 @@
               
               <!-- Skybox Size -->
               <tr>
-                <td class="list-item"><span>Skybox Size</span></td>
+                <td class="list-item"><span>Skysphere Size</span></td>
                 <td class="text-right">
                   <md-input-container>
                     <input (keyup)="updateSceneValues()" mdInput [(ngModel)]='currentEnvironment.skybox_size' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
@@ -172,7 +172,7 @@
 
               <!-- Skybox Position -->
               <tr>
-                <td class="list-item"><span>Skybox Position</span></td>
+                <td class="list-item"><span>Skysphere Position</span></td>
                 <td class="text-right">
                   <md-input-container>
                     <input (keyup)="updateSceneValues()"  mdInput [(ngModel)]='currentEnvironment.skybox_position' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
