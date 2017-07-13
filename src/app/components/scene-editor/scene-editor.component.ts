@@ -16,14 +16,14 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 export class SceneEditorComponent implements OnInit {
 
   private spinAxisOptions = [
-    {value: 'x', viewValue: 'X'},
-    {value: 'y', viewValue: 'Y'},
-    {value: 'z', viewValue: 'Z'}
+    { value: 'x', viewValue: 'X' },
+    { value: 'y', viewValue: 'Y' },
+    { value: 'z', viewValue: 'Z' }
   ];
 
   private skyboxTypeOptions = [
-    {value: 'grid', viewValue: 'Grid'},
-    {value: 'milky', viewValue: 'Space'}
+    { value: 'grid', viewValue: 'Grid' },
+    { value: 'milky', viewValue: 'Space' }
   ];
 
   /* Presentation */
@@ -45,12 +45,12 @@ export class SceneEditorComponent implements OnInit {
   private downloadJsonHref;
 
   constructor(private _dataService: DataService,
-              private _sceneService: SceneService, 
-              private _dialogService: DialogService, 
-              private _sanitizer: DomSanitizer ) {
+    private _sceneService: SceneService,
+    private _dialogService: DialogService,
+    private _sanitizer: DomSanitizer) {
     this.sceneIndex = 0;
     this.scenes = [];
-    
+
     this.modelIndex = 0;
     this.currentModel = new Model();
     this.currentEnvironment = new Environment();
@@ -75,7 +75,7 @@ export class SceneEditorComponent implements OnInit {
         console.log('currentEnv: ', this.currentEnvironment)
         console.log('scenes: ', this.scenes)
       })
-      
+
       //this.scenes.push(this._sceneService.createDummyScene());
       //this.scenes.push(this._sceneService.createDummyScene2());
     })
@@ -100,13 +100,13 @@ export class SceneEditorComponent implements OnInit {
       sceneNames.sort();
       let greatestDuplicate: number = 0;
       sceneNames.forEach(sceneName => {
-        if(sceneName.startsWith('New Scene')) {
-          let num:number = +sceneName.substr(sceneName.lastIndexOf(' '));
-          if( num >= greatestDuplicate ) greatestDuplicate = num;
+        if (sceneName.startsWith('New Scene')) {
+          let num: number = +sceneName.substr(sceneName.lastIndexOf(' '));
+          if (num >= greatestDuplicate) greatestDuplicate = num;
           greatestDuplicate++
         }
       });
-      if(greatestDuplicate != 0) newScene.name = newScene.name.concat(' - '+greatestDuplicate);
+      if (greatestDuplicate != 0) newScene.name = newScene.name.concat(' - ' + greatestDuplicate);
       console.log(newScene.name);
       this.scenes.push(newScene);
     })
@@ -130,26 +130,34 @@ export class SceneEditorComponent implements OnInit {
   }
 
   updateSceneValues() {
-    if(this.models.length != 0) this.deepClone(this.models[this.modelIndex], this.currentModel);
+    if (this.models.length != 0) this.deepClone(this.models[this.modelIndex], this.currentModel);
     this.deepClone(this.scenes[this.sceneIndex].environment, this.currentEnvironment);
   }
 
   deleteScene(index: number) {
     this.scenes.splice(index, 1);
-    if(this.scenes.length == 0) {
+    if (this.scenes.length == 0) {
       this._sceneService.getEmptyScene().subscribe(scene => {
-        this.scenes.push(scene);
-        this.selectScene(this.scenes.length-1);
+
+        let newScene = scene
+
+        this._sceneService.getEnvironment(newScene._id).subscribe(env => {
+          newScene.environment = env
+          this.scenes.push(scene);
+          this.selectScene(this.sceneIndex)
+
+          this.models = this.scenes[this.sceneIndex].models;
+        })
       })
     } else {
-      this.selectScene(this.scenes.length-1);
+      this.selectScene(this.scenes.length - 1);
     }
   }
 
   deleteModel(index: number) {
     this.models.splice(index, 1);
-    if(this.models.length != 0) { 
-      this.modelIndex = this.models.length-1;
+    if (this.models.length != 0) {
+      this.modelIndex = this.models.length - 1;
       this.selectModel(this.modelIndex);
     }
   }
@@ -166,7 +174,7 @@ export class SceneEditorComponent implements OnInit {
     this._dialogService
       .confirm('Delete Scene Dialog', 'Are you sure you want to delete this scene?')
       .subscribe(res => {
-        if(res) this.deleteScene(this.sceneIndex);
+        if (res) this.deleteScene(this.sceneIndex);
       });
   }
 
@@ -174,7 +182,7 @@ export class SceneEditorComponent implements OnInit {
     this._dialogService
       .confirm('Delete Model Dialog', 'Are you sure you want to delete this model?')
       .subscribe(res => {
-        if(res) this.deleteModel(this.modelIndex);
+        if (res) this.deleteModel(this.modelIndex);
       })
   }
 
