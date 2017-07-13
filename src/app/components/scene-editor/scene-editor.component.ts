@@ -62,23 +62,7 @@ export class SceneEditorComponent implements OnInit {
       this.presentation.scenes = this.scenes;
     });
 
-    this._sceneService.getEmptyScene().subscribe(scene => {
-
-      let newScene = scene
-
-      this._sceneService.getEnvironment(newScene._id).subscribe(env => {
-        newScene.environment = env
-        this.scenes.push(scene);
-        this.selectScene(this.sceneIndex)
-
-        this.models = this.scenes[this.sceneIndex].models;
-        console.log('currentEnv: ', this.currentEnvironment)
-        console.log('scenes: ', this.scenes)
-      })
-
-      //this.scenes.push(this._sceneService.createDummyScene());
-      //this.scenes.push(this._sceneService.createDummyScene2());
-    })
+    this.getNewScene();
   }
 
   addNewScene() {
@@ -137,18 +121,7 @@ export class SceneEditorComponent implements OnInit {
   deleteScene(index: number) {
     this.scenes.splice(index, 1);
     if (this.scenes.length == 0) {
-      this._sceneService.getEmptyScene().subscribe(scene => {
-
-        let newScene = scene
-
-        this._sceneService.getEnvironment(newScene._id).subscribe(env => {
-          newScene.environment = env
-          this.scenes.push(scene);
-          this.selectScene(this.sceneIndex)
-
-          this.models = this.scenes[this.sceneIndex].models;
-        })
-      })
+      this.getNewScene();
     } else {
       this.selectScene(this.scenes.length - 1);
     }
@@ -160,6 +133,26 @@ export class SceneEditorComponent implements OnInit {
       this.modelIndex = this.models.length - 1;
       this.selectModel(this.modelIndex);
     }
+  }
+
+  getNewScene(callback?) {
+    this._sceneService.getEmptyScene().subscribe(scene => {
+
+      let newScene = scene
+
+      this._sceneService.getEnvironment(newScene._id).subscribe(env => {
+        newScene.environment = env
+        this.scenes.push(scene);
+        this.selectScene(this.sceneIndex)
+
+        this.models = this.scenes[this.sceneIndex].models;
+        console.log('currentEnv: ', this.currentEnvironment)
+        console.log('scenes: ', this.scenes)
+      })
+
+      //this.scenes.push(this._sceneService.createDummyScene());
+      //this.scenes.push(this._sceneService.createDummyScene2());
+    })
   }
 
   setSceneDownload() {
