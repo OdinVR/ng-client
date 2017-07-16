@@ -4,6 +4,11 @@ var sceneModels = [];
 var receivedFirstScene = false;
 var currentScene = {};
 
+var SceneBuilder = function () { }
+
+SceneBuilder.prototype.renderInBody = renderInBody;
+SceneBuilder.prototype.renderInPanel = renderInPanel;
+
 function renderInBody() {
 	document.body.innerHTML = "";
 	renderer.setPixelRatio(window.devicePixelRatio);
@@ -12,6 +17,7 @@ function renderInBody() {
 }
 
 function renderInPanel(width,height) {
+	console.log('height: ', height, ' width: ', width)
 	var panel = document.getElementById("3dscene");
 	console.log('rendering');
 	renderer.setPixelRatio(window.devicePixelRatio);

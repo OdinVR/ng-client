@@ -11,3 +11,7 @@ var myimptest = (function() {
   return myimptest;
 
 })(myimptest||{})
+
+function testfunc() {
+    alert('test');
+}
