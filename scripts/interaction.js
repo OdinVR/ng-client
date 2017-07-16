@@ -1,5 +1,5 @@
 function startInteraction() {
-	/* disable reticulum for now
+
 	Reticulum.init(camera, {
 		proximity: false,
 		clickevents: true,
@@ -27,7 +27,7 @@ function startInteraction() {
 			clickCancelFuse: false //If users clicks on targeted object fuse is canceled
 		}
 	});
-	*/
+	
 	scene.add(camera);
 }
 
