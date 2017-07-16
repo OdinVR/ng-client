@@ -89,7 +89,7 @@ function animate(timestamp) {
   // Apply rotation to cube mesh  
   spinLoop(delta);
 
-  Reticulum.update();
+  //Reticulum.update();
 
   controls.update();
   // Render the scene through the manager.

@@ -269,6 +269,7 @@ var Reticulum = (function () {
 
         //Clock Setup
         clock = new THREE.Clock(true);
+        console.log('clock init: ', clock)
 
         //Initiate Reticle
         reticle.initiate(options.reticle);

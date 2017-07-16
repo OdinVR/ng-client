@@ -38,10 +38,9 @@
         "../node_modules/three/examples/js/loaders/ColladaLoader.js",
         "../scripts/reticulum.js",
         "../scripts/rendering.js",
+        "../scripts/scene.js",
         "../scripts/scenebuilder.js",
         "../scripts/remote.js",
-        "../scripts/scene.js",
-        "../scripts/interaction.js",
         "../scripts/myimptest.js"
       ],
       "environmentSource": "environments/environment.ts",
